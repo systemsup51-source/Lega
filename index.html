@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAACpUlEQVR4AWyTT0hUURTGf++OozPj9EepFmq7VmYQBNEiyEW4iKBcua9VQRYiuGnhwoWQhESEVCBREEotchP+qwYJCnQRoplGqI2GOVOTzsyb/7dznqOLaJhv3rvv3e8737nnG8PtQUv3M0vPkKX3paVvxNL/2nJ/wjLwzvL4vWXwo+XpjOX5J8vwnOXF5z0YMi5k0mXo/X+QzYAil4V8DgoFsCX0Y8ikQEWyLo6pwB86gM8fgKJs8p4LWYm6LhahpJB33rqA8ZTVgVQ46Cbpik9x+esY+IOgxEJeClkwPnlWCRV+uTdQFAf5vAq4INVVKBgMc665mcbjTVLJEcgmnxACYQjXQCAEkVcwPiyi8hVxQ0YsSnUVoFDEGIPjCFneUykuwrVQXYNPiPU3Wqh72I3Xspgilys72O1Ve1SiwvghVIuzvkpd5wXahu7QFazgdDiME9oP+QJa1Hj2c+U2xIFyPYiAM/eBpr6rdFTBlYYGqn0+vgjRNp0FVw5fYDw72oZCD8Zjy0/JYkafcNRnsNYyGY/zILrGYms7VIVh6zektrUFPYN/HGh/6RTFS+1MnDhPT+Uh+htOMnP9HsUzF+FnFBJxSKtATgUEepUWjBxidSBAVfAglfXHoK2TrWv9uK03YV8tRBchtiYOfolAsuxAyTIJKwKO49ByqpFHh5cYOPKd7lSE+uVpWJkX8oJUX4U/MSFvg5sWgbzEUwMjAm5snZGJKSLTs8QyJRJ5w1bJRzGZFOIyxLWyWJfe8cLnioDM0ktcNkUiusTd2Sy3xlboeLNOR2SDXvnf/NjchIRAiZJWZC/e6FVAsy2J8kRiK7AwCXOjAonz/Lis38LGNyhXRIk6MXG8kwOZmMwJNESFHHgtyVXb0rPZvWrc94jujmDG5S8AAAD//8reZ94AAAAGSURBVAMANvuUAiGQfhAAAAAASUVORK5CYII=" type="image/x-icon">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legends - Независимый мессенджер</title>
+
+        <!-- SEO Meta Tags -->
+    <meta name="description" content="Legends - независимый мессенджер для общения с друзьями, прослушивания музыки и просмотра видео без рекламы">
+    <meta name="keywords" content="мессенджер, Legends, общение, чат, музыка, видео, без рекламы, скачать мессенджер">
+    <meta name="author" content="Гойда">
+    <meta name="robots" content="index, follow">
+
+        <!-- Open Graph Meta Tags for Social Media -->
+    <meta property="og:title" content="Legends - Независимый мессенджер">
+    <meta property="og:description" content="Мессенджер для общения с друзьями, прослушивания музыки и просмотра видео без рекламы">
+    <meta property="og:type" content="website">
+
+        <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Legends - Независимый мессенджер",
+      "description": "Мессенджер для общения с друзьями, прослушивания музыки и просмотра видео без рекламы",
+      "applicationCategory": "CommunicationApplication",
+      "operatingSystem": "Windows",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB"
+      }
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #121212;
+            --bg-secondary: #1e1e1e;
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --accent: #02cddd;
+            --accent-hover: #16eafc;
+            --accent-secondary: #02cddd;
+            --accent-secondary-hover: #16eafc;
+            --border: #333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background-color: var(--bg-secondary);
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+            z-index: 10;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent);
+        }
+
+        .hero {
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .background-image {
+            width: 600px;
+            height: 600px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.9;
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 3;
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .background-image.left {
+            background-image: url('/cat.png');
+            margin-left: 40px;
+            margin-top: 130px;
+            animation-delay: 0s;
+        }
+
+        .background-image.right {
+            background-image: url('Dog.png');
+            margin-right: -1150px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(5) rotate(1deg);
+            }
+            25% {
+                transform: translateY(-5x) rotate(-1deg);
+            }
+            50% {
+                transform: translateY(5) rotate(1deg);
+            }
+            75% {
+                transform: translateY(5px) rotate(1deg);
+            }
+        }
+
+        .background-image:hover {
+            opacity: 0.9;
+            transform: scale(1.05);
+            animation-play-state: paused;
+        }
+
+        .unified-button {
+            display: inline-flex;
+            background-color: var(--accent);
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(2, 205, 221, 0.3);
+            margin-top: 20px;
+            position: relative;
+            z-index: 6;
+        }
+
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            min-width: 170px;
+            position: relative;
+            border: none;
+            cursor: pointer;
+            gap: 10px;
+        }
+
+        .download-btn.client {
+            background-color: var(--accent);
+        }
+
+        .download-btn.client:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .download-btn.server {
+            background-color: var(--accent);
+        }
+
+        .download-btn.server:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Разделитель между кнопками */
+        .download-btn.client::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            height: 60%;
+            width: 1px;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .icon-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 24px;
+            height: 24px;
+        }
+
+        .button-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .main-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            line-height: 1.2;
+        }
+
+        .sub-text {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            margin-top: 2px;
+            line-height: 1.2;
+        }
+
+        .features {
+            padding: 8rem 0 4rem 0;
+            background-color: var(--bg-secondary);
+            position: relative;
+            z-index: 4;
+            margin-top: -100px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            position: relative;
+            z-index: 5;
+        }
+
+        .feature-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        /* Контейнер для картинок, которые выглядывают */
+        .peeking-images {
+            position: absolute;
+            top: -200px;
+            left: 0;
+            width: 100%;
+            height: 400px;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .peeking-image {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.8;
+            filter: drop-shadow(0 0 25px rgba(2, 205, 221, 0.5));
+            transition: all 0.5s ease;
+            animation: float-peek 8s ease-in-out infinite;
+        }
+
+        .peeking-image.cat {
+            background-image: url('/cat.png');
+            left: 50px;
+            top: 50px;
+            animation-delay: 0.5s;
+        }
+
+        .peeking-image.dog {
+            background-image: url('Dog.png');
+            right: 50px;
+            top: 30px;
+            animation-delay: 2s;
+        }
+
+        @keyframes float-peek {
+            0%, 100% {
+                transform: translateY(5) rotate(-1deg);
+            }
+            25% {
+                transform: translateY(-5px) rotate(-1deg);
+            }
+            50% {
+                transform: translateY(-5) rotate(-1deg);
+            }
+            75% {
+                transform: translateY(5px) rotate(-1deg);
+            }
+        }
+
+        .peeking-image.dog {
+            animation-name: float-peek-dog;
+        }
+
+        @keyframes float-peek-dog {
+            0%, 100% {
+                transform: translateY(-5) rotate(1deg);
+            }
+            25% {
+                transform: translateY(-5px) rotate(1deg);
+            }
+            50% {
+                transform: translateY(5) rotate(1deg);
+            }
+            75% {
+                transform: translateY(5px) rotate(1deg);
+            }
+        }
+
+        .peeking-image:hover {
+            opacity: 0.9;
+            transform: rotate(0deg) scale(1.05);
+            animation-play-state: paused;
+        }
+
+        .screenshots {
+            padding: 4rem 0;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .screenshot {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            background-color: var(--bg-secondary);
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+        }
+
+        .faq {
+            padding: 4rem 0;
+            background-color: var(--bg-secondary);
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 1.5rem;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+        }
+
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border);
+        }
+
+        /* Canvas для анимированного фона */
+        #particleCanvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        @media (max-width: 1024px) {
+            .background-image {
+                width: 200px;
+                height: 200px;
+            }
+
+            .background-image.left {
+                margin-left: -30px;
+            }
+
+            .background-image.right {
+                margin-right: -30px;
+            }
+
+            .peeking-image {
+                width: 250px;
+                height: 250px;
+            }
+
+            .peeking-image.cat {
+                left: 20px;
+                top: 70px;
+            }
+
+            .peeking-image.dog {
+                right: 20px;
+                top: 50px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                min-height: 400px;
+                padding: 2rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .background-image {
+                width: 120px;
+                height: 120px;
+                opacity: 0.5;
+            }
+
+            .background-image.left {
+                margin-left: -20px;
+            }
+
+            .background-image.right {
+                margin-right: -20px;
+            }
+
+            .features {
+                padding: 6rem 0 3rem 0;
+                margin-top: -50px;
+            }
+
+            .peeking-images {
+                top: -150px;
+                height: 300px;
+            }
+
+            .peeking-image {
+                width: 150px;
+                height: 150px;
+                opacity: 0.6;
+            }
+
+            .peeking-image.cat {
+                left: 10px;
+                top: 80px;
+            }
+
+            .peeking-image.dog {
+                right: 10px;
+                top: 60px;
+            }
+
+            .unified-button {
+                flex-direction: column;
+                border-radius: 15px;
+            }
+
+            .download-btn {
+                width: 100%;
+                padding: 15px 20px;
+                justify-content: flex-start;
+            }
+
+            .download-btn.client::after {
+                content: none;
+            }
+
+            .download-btn.client {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            }
+
+            .button-text {
+                align-items: flex-start;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .background-image {
+                display: none;
+            }
+
+            .hero {
+                min-height: auto;
+            }
+
+            .peeking-images {
+                display: none;
+            }
+
+            .features {
+                margin-top: 0;
+                padding: 3rem 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Canvas для анимированного фона -->
+    <canvas id="particleCanvas"></canvas>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Legends</div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-background">
+            <div class="background-image left"></div>
+            <div class="background-image right"></div>
+        </div>
+
+        <div class="container hero-content">
+            <h1>МемоГрам|Legends</h1>
+            <p>Для тех, кто любит мемы)</p>
+
+            <div class="unified-button">
+                <a href="Legends_setup.exe" download="Legends_setup.exe" class="download-btn client">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-download" style="font-size: 1.3em;"></i>
+                    </div>
+                    <div class="button-text">
+                        <span class="main-text">Клиент</span>
+                        <span class="sub-text">для пользователей</span>
+                    </div>
+                </a>
+                <a href="dog.png" download="dog.png" class="download-btn server">
+                    <div class="icon-wrapper">
+                        <i class="fas fa-server" style="font-size: 1.3em;"></i>
+                    </div>
+                    <div class="button-text">
+                        <span class="main-text">Сервер</span>
+                        <span class="sub-text">для администраторов</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="peeking-images">
+
+        </div>
+        <div class="container">
+            <h2 class="section-title">Возможности</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3>Независимый сервер</h3>
+                    <p>Абсолютная защита от мошенников, хакерских атак и блокировок</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Общайтесь с друзьями, слушайте музыку и смотрите видео в одном окне без рекламы</h3>
+                    <p>Да-да, это чистая правда</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Эта хуйня иногда вылетает</h3>
+                    <p>Ну сорь. Я маленький и глупий непрограммист</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots">
+        <div class="container">
+            <h2 class="section-title">Скриншоты</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot">Скриншот клиента</div>
+                <div class="screenshot">Скриншот сервера</div>
+                <div class="screenshot">Скриншот управления</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Возможные вопросы</h2>
+            <div class="faq-item">
+                <div class="faq-question">Как установить программу?</div>
+                <div class="faq-answer">Скачайте установочный файл, запустите его и следуйте инструкции мастера установки.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Какие системные требования?</div>
+                <div class="faq-answer">Windows 10/11, 500 МБ свободного места на диске.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Это бесплатная программа?</div>
+                <div class="faq-answer">Да, версия полностью бесплатна.</div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 Гойда</p>
+        </div>
+    </footer>
+
+    <script>
+        // Конфигурация частиц
+        const config = {
+            particleColor: 'rgba(2, 205, 221, 0.5)',
+            particleCount: 80,
+            defaultSpeed: 0.7,
+            lineColor: 'rgba(2, 205, 221, 0.3)'
+        };
+
+        let particles = [];
+        let animationId = null;
+
+        // Инициализация канваса
+        function initParticles() {
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Установка размеров канваса
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            // Создание частиц
+            for (let i = 0; i < config.particleCount; i++) {
+                particles.push({
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height,
+                    speedX: (Math.random() - 0.5) * config.defaultSpeed,
+                    speedY: (Math.random() - 0.5) * config.defaultSpeed,
+                    size: Math.random() * 2 + 1
+                });
+            }
+
+            // Запуск анимации
+            animateParticles();
+        }
+
+        // Анимация частиц
+        function animateParticles() {
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+
+            // Очистка канваса
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Обновление и отрисовка частиц
+            for (let i = 0; i < particles.length; i++) {
+                let p = particles[i];
+
+                // Обновление позиции
+                p.x += p.speedX;
+                p.y += p.speedY;
+
+                // Проверка границ
+                if (p.x < 0 || p.x > canvas.width) p.speedX *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.speedY *= -1;
+
+                // Отрисовка частицы
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+                ctx.fillStyle = config.particleColor;
+                ctx.fill();
+
+                // Отрисовка линий между близкими частицами
+                for (let j = i + 1; j < particles.length; j++) {
+                    let p2 = particles[j];
+                    let distance = Math.sqrt((p.x - p2.x) * (p.x - p2.x) + (p.y - p2.y) * (p.y - p2.y));
+
+                    if (distance < 100) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = config.lineColor;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            animationId = requestAnimationFrame(animateParticles);
+        }
+
+        // Запуск при загрузке страницы
+        window.onload = function() {
+            initParticles();
+
+        };
+    </script>
+</body>
+</html>
